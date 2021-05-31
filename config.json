@@ -1,0 +1,12 @@
+{
+
+  "proxyserver":"",
+  "botID": "1802127779:AAH2gxj8LuzUz1ANt-7BMhuUvqjptdXlItg",
+  "chatID": 689494698,
+  "geoKey": "pk.eyJ1Ijoic3RlcmluNTAxIiwiYSI6ImNqeWw0bzZrejA0N2ozZHM0NTQ5d3N4Y24ifQ.bhkWxjfwlbVPhFY2L22fhw",
+  "source": ["Nadathara","Mupliyam"],
+  "checkforToday": 1,
+  "checkforTomorrow": 1,
+  "sleepInSec": 60
+
+ }
