@@ -7,6 +7,6 @@
   "source": ["Nadathara","Mupliyam"],
   "checkforToday": 1,
   "checkforTomorrow": 1,
-  "sleepInSec": 60
-
+  "sleepInSec": 60,
+  "AlertOnly18": false
  }
