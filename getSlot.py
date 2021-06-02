@@ -2,6 +2,7 @@
 import json, requests
 import pickle
 import datetime,time,os
+import pandas as pd
 
 configJson = json.load(open('config.json'))
 proxyDict = {
@@ -54,13 +55,14 @@ def getGeoDetails(name):
      for jj in    geoDetails:
         if jj['name']==name:
             return ({s1:jj[s1],s2:jj[s2]})
-     return ({'NoLocation':'NO'})
+     return ({'N':'N'})
     except Exception as e:
         print(e)
-        return ({'NoLocation': 'NO'})
+        return ({'N': 'N'})
 
 
 def doTheSearchForVaccine():
+    configJson = json.load(open('config.json'))
     print ("doing search..")
     loc = []
     if configJson['checkforToday']:
@@ -73,9 +75,15 @@ def doTheSearchForVaccine():
     print("Checkin for slots \n\n")
     listofAlerts=[]
     for kk in loc:
-        if kk['dose1'] >2:
-            kk.update (getGeoDetails(kk['name']))
-            listofAlerts.append(kk)
+        if kk['dose1'] >0:
+            if configJson['AlertOnly18']:
+                if (kk['min_age_limit'] != 45):
+                    kk.update(getGeoDetails(kk['name']))
+                    listofAlerts.append(kk)
+
+            else:
+               kk.update (getGeoDetails(kk['name']))
+               listofAlerts.append(kk)
 
 
     if len (listofAlerts) > 0:
@@ -83,16 +91,10 @@ def doTheSearchForVaccine():
 
 def  doAlert(obj):
     print ("doing alert")
-    c=0
-    message=""
-    for kk in obj:
-        message=message+str(kk)
-        if c>5:
-            break
-        c+=1
-    if len (obj) <= 5:
-       message=str(obj)
-    print (message)
+    df = pd.DataFrame(obj)
+    df = df.drop(['N'], axis=1)
+    print(df)
+    message=df.to_string()[:4000]
     pnr_data = {
 
         'chat_id': chatID,
@@ -108,7 +110,7 @@ def  doAlert(obj):
     url = "https://api.telegram.org/bot"+botID+"/sendMessage"
     result = session_requests.get(url, headers=headers, params=pnr_data, proxies=proxyDict)
     results = json.loads(result.content)
-    print(results)
+    #print(results)
     if (results['ok']):
         return True
     else:
@@ -118,6 +120,7 @@ def  doAlert(obj):
 if __name__ == '__main__':
       while True:
           try:
+
               doTheSearchForVaccine()
               print ("sleep for  "+ str(configJson['sleepInSec']))
               time.sleep(configJson['sleepInSec'])
