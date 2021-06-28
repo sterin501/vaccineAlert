@@ -1,12 +1,17 @@
 {
 
-  "proxyserver":"",
-  "botID": "",
+  "proxyserver":"www-proxy-idc.in.oracle.com",
+  "mobile": "9986503095",
+  "botID": "1802127779:AAH2gxj8LuzUz1ANt-7BMhuUvqjptdXlItg",
   "chatID": 689494698,
-  "geoKey": "",
+  "geoKey": "pk.eyJ1Ijoic3RlcmluNTAxIiwiYSI6ImNqeWw0bzZrejA0N2ozZHM0NTQ5d3N4Y24ifQ.bhkWxjfwlbVPhFY2L22fhw",
   "source": ["Nadathara","Mupliyam"],
   "checkforToday": 1,
   "checkforTomorrow": 1,
   "sleepInSec": 60,
-  "AlertOnly18": false
+  "AlertOnly18": true,
+  "pincodes": [680001,680312,680751,680020,680301,680006,680014,680302,680303,680005,680121,680307,680317],
+  "IsCovidShiled": true,
+  "beneficiaries": ["64587591769690"],
+  "readBenfFromCowin": true
  }

@@ -92,7 +92,9 @@ def doTheSearchForVaccine():
 def  doAlert(obj):
     print ("doing alert")
     df = pd.DataFrame(obj)
-    df = df.drop(['N'], axis=1)
+    if 'N' in df:
+        del df['N']
+    #df = df.drop(['N'], axis=1)
     print(df)
     message=df.to_string()[:4000]
     pnr_data = {
