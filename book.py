@@ -110,7 +110,7 @@ def searchCenter():
         if kk['pincode'] in configJson['pincodes']:
 
             if (configJson['AlertOnly18'] and kk['min_age_limit'] == 45):
-                      print ("skipping {0} {1} ".format((kk['name'],kk['min_age_limit'])))
+                      #print ("skipping {0} {1} ".format((kk['name'],kk['min_age_limit'])))
                       continue
             if kk['available_capacity'] > 1 and kk['vaccine'] == "COVISHIELD":
                 center['center_id']= kk['center_id']
