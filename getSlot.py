@@ -38,7 +38,7 @@ def getLocation(date_object):
             # print (kk)
             #print(kk['name'] + " " + str(kk['available_capacity']))
             URLS.append({'name': kk['name'] , 'dose1': kk['available_capacity_dose1'], 'dose2': kk['available_capacity_dose1'],
-                         'min_age_limit': kk['min_age_limit'], 'vaccine': kk['vaccine'],'date':kk['date']
+                         'min_age_limit': kk['min_age_limit'], 'vaccine': kk['vaccine'],'date':kk['date'],'pincode':kk['pincode']
                          })
 
         return URLS
@@ -96,6 +96,12 @@ def  doAlert(obj):
         del df['N']
     #df = df.drop(['N'], axis=1)
     print(df)
+    print ("Pincodes for booking "+ str (configJson['pincodes'] ))
+    for index,row in df.iterrows():
+        if row['pincode'] in configJson['pincodes']:
+            print ("{0} __{1} ".format( row['name'],row['pincode'] ))
+            if (row['dose1'] > 1):
+                print ("enough dose to book .. use\n\n python3 book.py")
     message=df.to_string()[:4000]
     pnr_data = {
 
@@ -124,7 +130,7 @@ if __name__ == '__main__':
           try:
 
               doTheSearchForVaccine()
-              print ("sleep for  "+ str(configJson['sleepInSec']))
+              print ("sleep for  {0} at {1}".format (configJson['sleepInSec'] , datetime.datetime.now().strftime("%a %d/%m %H:%M:%S ")))
               time.sleep(configJson['sleepInSec'])
           except Exception as e:
               print (e)
