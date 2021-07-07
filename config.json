@@ -1,9 +1,9 @@
 {
 
   "proxyserver":"",
-  "mobile": "9986503095",
-  "botID": "1802127779:AAH2gxj8LuzUz1ANt-7BMhuUvqjptdXlItg",
-  "chatID": 689494698,
+  "mobile": "",
+  "botID": "1802127779:",
+  "chatID": 68944698,
   "geoKey": "pk.eyJ1Ijoic3RlcmluNTAxIiwiYSI6ImNqeWw0bzZrejA0N2ozZHM0NTQ5d3N4Y24ifQ.bhkWxjfwlbVPhFY2L22fhw",
   "source": ["Nadathara","Mupliyam"],
   "checkforToday": 1,
@@ -15,6 +15,6 @@
   "beneficiaries": ["64587591769690"],
   "readBenfFromCowin": true,
   "dose": 1,
-  "office":"www-proxy-idc.in.oracle.com"
+  "office":"www-proxy-cle.com"
 
  }
