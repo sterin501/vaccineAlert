@@ -110,20 +110,22 @@ def searchCenter():
         if kk['pincode'] in configJson['pincodes']:
 
             if (configJson['AlertOnly18'] and kk['min_age_limit'] == 45):
-                      #print ("skipping {0} {1} ".format((kk['name'],kk['min_age_limit'])))
+                     #print ("skipping {0} {1} ".format((kk['name'],kk['min_age_limit'])))
                       continue
+
             if kk['available_capacity'] > 1 and kk['vaccine'] == "COVISHIELD":
                 center['center_id']= kk['center_id']
                 center['session_id']= kk['session_id']
                 center['slot']=kk["slots"][-1]
                 return  (center)
     except Exception as e:
+       print ("BAD")
        print(e)
        return False
 
 def bookSlot(center,benf):
     pnr_data =  {
-        "dose": 1,
+        "dose": configJson['dose'],
         "session_id":center['session_id'] ,
         "center_id":center['center_id'],
         "slot": center['slot'],
@@ -166,4 +168,4 @@ if __name__ == '__main__':
 
 
 
-
+## 
